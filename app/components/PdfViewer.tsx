@@ -40,14 +40,18 @@ export default function PdfViewer() {
         }
       >
         {Array.from({ length: numPages }, (_, index) => (
-          <Page
+          <div
             key={`page_${index + 1}`}
-            pageNumber={index + 1}
-            width={pageWidth}
-            renderTextLayer={false}
-            renderAnnotationLayer={false}
-            className="pdf-page"
-          />
+            className="pdf-page-wrapper"
+          >
+            <Page
+              pageNumber={index + 1}
+              width={pageWidth}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+              className="pdf-page"
+            />
+          </div>
         ))}
       </Document>
     </div>
