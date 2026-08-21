@@ -1,26 +1,96 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background: #000;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #000;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background: #000;
+}
+
+.header {
+  height: 100px;
+  width: 100%;
+  background: #000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid #222;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  width: 180px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.pdf-viewer {
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  background: #000;
+}
+
+.pdf-viewer .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pdf-page {
+  max-width: 100%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.pdf-page canvas {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.loading {
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+.zoom-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.zoom-content {
+  display: flex;
+  justify-content: center;
+}
+
+.pdf-page {
+  touch-action: none;
 }
