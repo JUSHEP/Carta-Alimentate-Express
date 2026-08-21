@@ -1,4 +1,4 @@
-import PdfViewer from "./components/PdfViewer";
+import PdfViewerClient from "./components/PdfViewerClient";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         />
       </header>
 
-      <PdfViewer />
+      <PdfViewerClient />
     </main>
   );
 }
