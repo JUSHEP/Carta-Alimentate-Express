@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
@@ -16,7 +15,6 @@ export default function PdfViewer() {
   useEffect(() => {
     const updateWidth = () => {
       const width = window.innerWidth - 20;
-
       setPageWidth(Math.min(width, 1000));
     };
 
@@ -42,30 +40,14 @@ export default function PdfViewer() {
         }
       >
         {Array.from({ length: numPages }, (_, index) => (
-          <TransformWrapper
+          <Page
             key={`page_${index + 1}`}
-            initialScale={1}
-            minScale={1}
-            maxScale={3}
-            centerOnInit
-            doubleClick={{
-              disabled: false,
-              mode: "reset",
-            }}
-          >
-            <TransformComponent
-              wrapperClass="zoom-wrapper"
-              contentClass="zoom-content"
-            >
-              <Page
-                pageNumber={index + 1}
-                width={pageWidth}
-                renderTextLayer={false}
-                renderAnnotationLayer={false}
-                className="pdf-page"
-              />
-            </TransformComponent>
-          </TransformWrapper>
+            pageNumber={index + 1}
+            width={pageWidth}
+            renderTextLayer={false}
+            renderAnnotationLayer={false}
+            className="pdf-page"
+          />
         ))}
       </Document>
     </div>
